@@ -65,7 +65,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-8'}`}>
       <div className="container mx-auto px-8 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="logo-recru.png" alt="Recrutare Logo" className="h-10 md:h-12 w-auto object-contain" onError={(e) => {
+          <img src="/logo-recru.png" alt="Recrutare Logo" className="h-10 md:h-12 w-auto object-contain" onError={(e) => {
             // Fallback caso a imagem não exista no ambiente atual
             e.currentTarget.style.display = 'none';
             e.currentTarget.parentElement!.innerHTML += '<span class="text-2xl font-black text-[#1E40AF]">RECRUTARE</span>';
