@@ -23,7 +23,8 @@ import {
   UserCheck,
   BrainCircuit,
   BarChart3,
-  ChevronRight
+  ChevronRight,
+  Instagram
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -326,7 +327,7 @@ const Contact = () => {
 const Footer = () => (
   <footer className="py-4 px-8 bg-slate-50 border-t border-slate-100">
     <div className="container mx-auto">
-      <div className="flex flex-col items-start gap-6">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col gap-4 items-start">
           <img src="/logo-recru.png" alt="Logo Recrutare" className="h-10 w-auto object-contain" />
           <p className="text-slate-400 text-sm max-w-xs font-medium">
