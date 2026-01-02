@@ -333,8 +333,10 @@ const Footer = () => (
             Sua parceira estratégica em recrutamento, seleção e hunting de alta performance.
           </p>
         </div>
-
-
+        <a href="https://www.instagram.com/recrutareoficial/?igsh=ejRoZmE0OTN6Z3h0#" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#1E40AF] transition-colors flex items-center gap-2">
+                <Instagram size={24} />
+                <span className="font-medium">Instagram</span>
+              </a>
       </div>
       <div className="mt-16 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold uppercase tracking-widest">
         <span>© {new Date().getFullYear()} RECRUTARE CONSULTORIA</span>
