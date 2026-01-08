@@ -74,7 +74,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-10">
-          {['Serviços', 'Metodologia', 'Diferenciais'].map((item) => (
+          {['Serviços', 'Metodologia', 'Franquias', 'Diferenciais'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} className="text-slate-600 font-semibold hover:text-[#1E40AF] transition-colors">{item}</a>
           ))}
           <Button className="py-2.5 px-6 rounded-full text-sm">Agendar Conversa</Button>
@@ -93,7 +93,7 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden bg-white border-t p-8 flex flex-col gap-6 shadow-2xl absolute top-full left-0 w-full"
           >
-            {['Serviços', 'Metodologia', 'Diferenciais'].map((item) => (
+            {['Serviços', 'Metodologia', 'Franquias', 'Diferenciais'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-xl font-bold" onClick={() => setIsMenuOpen(false)}>{item}</a>
             ))}
             <Button>Solicitar Diagnóstico</Button>
