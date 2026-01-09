@@ -66,7 +66,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-8'}`}>
       <div className="container mx-auto px-8 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/logo-recru.png" alt="Recrutare Logo" className="h-10 md:h-12 w-auto object-contain" onError={(e) => {
+          <img src="/logo-recru.png" alt="Recrutare Logo" className="h-20 md:h-24 w-auto object-contain" onError={(e) => {
             // Fallback caso a imagem não exista no ambiente atual
             e.currentTarget.style.display = 'none';
             e.currentTarget.parentElement!.innerHTML += '<span class="text-2xl font-black text-[#1E40AF]">RECRUTARE</span>';
@@ -74,8 +74,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-10">
-          {['Serviços', 'Metodologia', 'Franquias', 'Diferenciais'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-slate-600 font-semibold hover:text-[#1E40AF] transition-colors">{item}</a>
+          {['Serviços', 'Metodologia', 'Plataforma', 'Diferenciais'].map((item) => (
+            <a key={item} href={item.toLowerCase() === 'plataforma' ? 'https://plataforma.recrutare.com.br/' : `#${item.toLowerCase()}`} className="text-slate-600 font-semibold hover:text-[#1E40AF] transition-colors" target="_blank" rel="noopener noreferrer">{item}</a>
           ))}
           <Button className="py-2.5 px-6 rounded-full text-sm">Agendar Conversa</Button>
         </div>
@@ -93,8 +93,8 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden bg-white border-t p-8 flex flex-col gap-6 shadow-2xl absolute top-full left-0 w-full"
           >
-            {['Serviços', 'Metodologia', 'Franquias', 'Diferenciais'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-xl font-bold" onClick={() => setIsMenuOpen(false)}>{item}</a>
+            {['Serviços', 'Metodologia', 'Plataforma', 'Diferenciais'].map((item) => (
+              <a key={item} href={item.toLowerCase() === 'plataforma' ? 'https://plataforma.recrutare.com.br/' : `#${item.toLowerCase()}`} className="text-xl font-bold" onClick={() => setIsMenuOpen(false)} target="_blank" rel="noopener noreferrer">{item}</a>
             ))}
             <Button>Solicitar Diagnóstico</Button>
           </motion.div>
@@ -126,23 +126,19 @@ const Hero = () => {
             <Crown size={18} /> Sua Parceira Estratégica em Talentos
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-8 tracking-tight">
-            Recrutamento certo <br />
-            para decisões <br />
-            <span className="text-[#1E40AF]">de alto nível.</span>
+            O Ecossistema Premium <br /> de Recrutamento e Seleção <br />
+            do <span className="text-[#1E40AF]">Brasil</span>
           </h1>
           <p className="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed">
-            Consultoria especializada em hunting de profissionais com <span className="font-bold text-slate-900">reposição gratuita por 12 meses</span>. Segurança absoluta para o seu crescimento.
+            A Recrutare é um ecossistema especializado de recrutamento e seleção, criado para escalar resultados com governança, tecnologia e inteligência operacional.
+          </p>
+          <p className="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed font-bold">
+            Resultado: mais eficiência, menos risco e recrutamento de alto nível para empresas.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 max-w-xl mb-6">
-            <input
-              type="email"
-              placeholder="Seu e-mail corporativo"
-              className="flex-1 px-6 py-4 rounded-xl border-2 border-slate-200 focus:border-[#1E40AF] outline-none transition-all shadow-sm"
-            />
-            <Button className="text-lg">Começar Agora</Button>
+            <Button className="text-lg">Fale Conosco</Button>
           </div>
-          <p className="text-xs text-slate-400 ml-2 italic">* Entraremos em contato em até 24h úteis.</p>
         </motion.div>
 
         <motion.div
@@ -184,6 +180,558 @@ const Hero = () => {
             </div>
           </Card>
         </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const WhatIsRecrutare = () => {
+  return (
+    <section id="o-que-e-recrutare" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">O que é a Recrutare</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            A Recrutare é um ecossistema B2B de recrutamento e seleção especializado, estruturado para escalar resultados com inteligência operacional, governança centralizada e liberdade de marca.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Check size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Diferente de franquias de RH ou consultorias tradicionais, a Recrutare opera também em modelo White Label, permitindo que o licenciado utilize:</h3>
+            <ul className="text-center text-slate-600 space-y-2 mt-4">
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Marca própria</li>
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Co-branding</li>
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Marca Recrutare</li>
+            </ul>
+            <p className="text-slate-500 text-sm leading-relaxed mt-4">
+              Tudo isso sem descaracterizar o ecossistema, sem gerar vínculo e sem engessamento operacional.
+            </p>
+          </Card>
+
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Sparkles size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Aqui, a Recrutare fornece a infraestrutura, a tecnologia, a governança e o método.</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mt-4">
+              O licenciado escolhe como se posicionar no mercado.
+            </p>
+          </Card>
+
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Zap size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">A Recrutare é um ecossistema B2B de recrutamento e seleção especializado, estruturado para resolver o maior gargalo do mercado:</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mt-4">
+              o conflito entre vender e executar.
+            </p>
+            <ul className="text-center text-slate-600 space-y-2 mt-4">
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Não impõe estruturas físicas</li>
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Não exige acúmulo de funções</li>
+              <li className="flex items-center gap-2"><ArrowRight size={18} className="text-[#1E40AF]" />Não engessa o crescimento</li>
+            </ul>
+            <p className="text-slate-500 text-sm leading-relaxed mt-4">
+              Aqui, tudo é desenhado para escala nacional, meritocracia e performance técnica.
+            </p>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProblemTraditionalHR = () => {
+  return (
+    <section id="problema-rh-tradicional" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">O Problema do Modelo Tradicional de RH</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            O mercado de recrutamento sofre com três falhas estruturais:
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Zap size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">1. Modelos engessados que limitam crescimento e inovação</h3>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Users size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">2. Conflito entre vendas e execução técnica, gerando ineficiência</h3>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <FileText size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">3. Custos fixos desnecessários, que aumentam o risco do operador</h3>
+          </Card>
+        </div>
+        <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed text-center mt-10">
+          A Recrutare nasce para eliminar esses gargalos com um novo paradigma.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const SolutionRecrutare = () => {
+  return (
+    <section id="solucao-recrutare" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">A Solução Recrutare</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            Um novo padrão de eficiência e escala
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Check size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Plataforma de governança centralizada</h3>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Sparkles size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Execução descentralizada por especialistas</h3>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <Users size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Separação clara de papéis</h3>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <BrainCircuit size={28} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Tecnologia como núcleo operacional</h3>
+          </Card>
+        </div>
+        <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed text-center mt-10">
+          Tudo isso conectado por um modelo B2B juridicamente seguro e altamente escalável.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const HowEcosystemWorks = () => {
+  const steps = [
+    { title: "Conexão Comercial", desc: "Licenciados comerciais prospectam, negociam e fecham contratos com empresas." },
+    { title: "Governança Central", desc: "A Recrutare centraliza contratos, faturamento, compliance, tecnologia e dados." },
+    { title: "Execução Técnica", desc: "Licenciados de RH especializados realizam o processo seletivo com excelência técnica." },
+    { title: "Entrega e Escala", desc: "A plataforma integra todo o fluxo, garantindo transparência, agilidade e qualidade." }
+  ];
+
+  return (
+    <section id="como-funciona" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Como Funciona o Ecossistema</h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {steps.map((step, i) => (
+            <Card key={i} className="p-8 text-center flex flex-col items-center">
+              <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+                {i === 0 && <Users size={28} />}
+                {i === 1 && <ShieldCheck size={28} />}
+                {i === 2 && <ClipboardCheck size={28} />}
+                {i === 3 && <BarChart3 size={28} />}
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{i + 1}. {step.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProfessionalLicensing = () => {
+  return (
+    <section id="licenciamento-profissionais" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Para Profissionais: Licenciamento Recrutare</h2>
+          <p className="text-slate-500 text-xl max-w-2xl mx-auto leading-relaxed">
+            Dois perfis. Um ecossistema.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10">
+          <Card className="p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Licenciado Comercial (Hunter)</h3>
+            <ul className="space-y-3 text-slate-600 text-center">
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Atuação focada em prospecção e fechamento B2B</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Relacionamento estratégico com empresas</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Sem execução técnica</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Sem operação administrativa</li>
+            </ul>
+            <p className="text-slate-500 text-sm mt-6">
+              Ideal para profissionais de vendas, consultores e líderes comerciais.
+            </p>
+          </Card>
+
+          <Card className="p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Licenciado RH (Especialista)</h3>
+            <ul className="space-y-3 text-slate-600 text-center">
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Foco total em recrutamento e seleção</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Triagem, entrevistas e parecer técnico</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Recebe demandas qualificadas pela plataforma</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Zero preocupação com vendas ou cobrança</li>
+            </ul>
+            <p className="text-slate-500 text-sm mt-6">
+              Ideal para recrutadores, consultores de RH e psicólogos.
+            </p>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const RecrutareDeliverables = () => {
+  return (
+    <section id="o-que-recrutare-entrega" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">O que a Recrutare Entrega ao Licenciado</h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {[
+            "Ecossistema White Label de recrutamento e seleção",
+            "Plataforma tecnológica proprietária",
+            "Governança jurídica e financeira",
+            "Centralização de contratos e faturamento",
+            "Banco de talentos ativo",
+            "Distribuição inteligente de demandas",
+            "Liberdade total de uso de marca (marca própria, co-branding ou Recrutare)"
+          ].map((item, i) => (
+            <Card key={i} className="p-8 flex items-center gap-4">
+              <Check size={28} className="text-[#1E40AF] shrink-0" />
+              <p className="text-lg font-medium text-slate-700">{item}</p>
+            </Card>
+          ))}
+        </div>
+        <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed text-center mt-10">
+          Tudo para que você escale resultados sem abrir mão da sua identidade profissional.
+        </p>
+        <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed text-center mt-4">
+          Tudo para que você foque exclusivamente naquilo que gera valor.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const NotFranchise = () => {
+  return (
+    <section id="nao-e-franquia" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Importante: Recrutare NÃO é Franquia</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            A Recrutare não se enquadra como franquia, nem opera como franqueadora.
+          </p>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mt-4">
+            Inclusive, o fato de operar em modelo White Label reforça essa característica.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <Card className="p-8">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Não há:</h3>
+            <ul className="space-y-3 text-slate-600 text-center">
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Royalties</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Taxas mensais</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Fundo de propaganda</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Padronização obrigatória de marca</li>
+              <li className="flex items-center gap-2"><X size={20} className="text-red-500" /> Transferência compulsória de know-how</li>
+            </ul>
+          </Card>
+          <Card className="p-8 col-span-2">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">O modelo é de licenciamento empresarial B2B, com autonomia operacional, liberdade de marca e governança centralizada.</h3>
+            <ul className="space-y-3 text-slate-600 text-center mt-4">
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Autonomia Operacional</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Liberdade de Marca</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Governança Centralizada</li>
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const JobBoard = () => {
+  return (
+    <section id="painel-de-vagas" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Painel de Vagas Recrutare</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            Transparência, escala e inteligência em tempo real
+          </p>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mt-4">
+            Sim, um Painel de Vagas é altamente estratégico e reforça o posicionamento premium da Recrutare como ecossistema tecnológico.
+          </p>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mt-4">
+            O Painel de Vagas funciona como uma vitrine dinâmica do ecossistema, onde empresas, candidatos e o mercado visualizam a força real da operação.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <Card className="p-8">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">O que o Painel de Vagas entrega:</h3>
+            <ul className="space-y-3 text-slate-600 text-center">
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Vagas ativas em todo o Brasil</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Segmentação por área, senioridade e localização</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Atualização em tempo real via plataforma</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Captação contínua de currículos</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Autoridade institucional (prova social de volume e escala)</li>
+            </ul>
+          </Card>
+          <Card className="p-8 col-span-2 flex items-center justify-center">
+            <Button className="text-lg">Explorar Vagas</Button>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ForCompanies = () => {
+  return (
+    <section id="para-empresas" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Para Empresas: Encontre os Melhores Talentos</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            Recrutamento de alta performance, sem complicação
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Agilidade no processo seletivo</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Avaliação técnica especializada</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Redução de risco na contratação</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Governança contratual e jurídica centralizada</p>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CompanyRegistration = () => {
+  return (
+    <section id="cadastro-empresa" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Como sua empresa pode se cadastrar</h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <span className="text-xl font-bold">1</span>
+            </div>
+            <p className="text-lg font-medium text-slate-700">Preencha o formulário de cadastro empresarial</p>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <span className="text-xl font-bold">2</span>
+            </div>
+            <p className="text-lg font-medium text-slate-700">Sua demanda é analisada</p>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <span className="text-xl font-bold">3</span>
+            </div>
+            <p className="text-lg font-medium text-slate-700">Um licenciado Recrutare entra em contato</p>
+          </Card>
+          <Card className="p-8 text-center flex flex-col items-center">
+            <div className="bg-[#1E40AF] text-white p-4 rounded-full mb-4">
+              <span className="text-xl font-bold">4</span>
+            </div>
+            <p className="text-lg font-medium text-slate-700">O processo seletivo é iniciado com especialistas</p>
+          </Card>
+        </div>
+        <div className="text-center mt-10">
+          <Button className="text-lg">Cadastrar Minha Empresa</Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CompetitiveAdvantages = () => {
+  return (
+    <section id="diferenciais-competitivos" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Diferenciais Competitivos</h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {[
+            "Ecossistema nacional integrado",
+            "Separação clara entre venda e execução",
+            "Tecnologia como núcleo",
+            "Zero estrutura física obrigatória",
+            "Escala sem custo fixo",
+            "Modelo meritocrático"
+          ].map((item, i) => (
+            <Card key={i} className="p-8 flex items-center gap-4">
+              <Check size={28} className="text-[#1E40AF] shrink-0" />
+              <p className="text-lg font-medium text-slate-700">{item}</p>
+            </Card>
+          ))}
+        </div>
+        <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed text-center mt-10">
+          A Recrutare não compete com o mercado tradicional. Ela redefine o jogo.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const NationalLicensedNetwork = () => {
+  return (
+    <section id="rede-licenciados" className="py-32 px-8 bg-white">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Rede Nacional de Licenciados Recrutare</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            Especialistas conectados. Presença nacional.
+          </p>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mt-4">
+            A Recrutare opera com uma rede distribuída de licenciados, estrategicamente posicionados por região e especialidade.
+          </p>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mt-4">
+            Essa seção reforça proximidade local sem perder robustez nacional.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <Card className="p-8 col-span-full">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Como funciona a seção de licenciados:</h3>
+            <ul className="space-y-3 text-slate-600 text-center">
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Mapa ou lista por região/cidade</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Filtro por perfil: Comercial ou RH</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Página individual de cada licenciado</li>
+              <li className="flex items-center gap-2"><Check size={20} className="text-[#1E40AF]" /> Mini-site exclusivo integrado à marca Recrutare</li>
+            </ul>
+            <p className="text-slate-500 text-sm italic mt-6">
+              O contato é sempre profissional, sem vínculo empregatício ou representação comercial.
+            </p>
+          </Card>
+        </div>
+        <div className="text-center mt-10">
+          <Button className="text-lg">Encontrar um licenciado Recrutare</Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const FAQSection = () => {
+  return (
+    <section id="faq" className="py-32 px-8 bg-slate-50">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">FAQ — Perguntas Frequentes</h2>
+          <p className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed">
+            Acesse nossa área de FAQ para entender em detalhes:
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Como funciona o licenciamento</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Papéis e responsabilidades</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Estrutura jurídica</p>
+          </Card>
+          <Card className="p-8 flex items-center gap-4">
+            <Check size={28} className="text-[#1E40AF] shrink-0" />
+            <p className="text-lg font-medium text-slate-700">Autonomia e governança</p>
+          </Card>
+        </div>
+        <div className="text-center mt-10">
+          <Button className="text-lg">Acessar FAQ</Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const FinalCallToAction = () => {
+  return (
+    <section id="chamada-final" className="py-32 px-8 bg-white text-center">
+      <div className="container mx-auto max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Recrutamento não é sobre volume. É sobre inteligência.</h2>
+        <p className="text-slate-500 text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Se você busca:
+        </p>
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <li className="flex flex-col items-center">
+            <Check size={32} className="text-[#1E40AF] mb-2" />
+            <span className="text-xl font-bold text-slate-900">Escala</span>
+          </li>
+          <li className="flex flex-col items-center">
+            <Check size={32} className="text-[#1E40AF] mb-2" />
+            <span className="text-xl font-bold text-slate-900">Segurança</span>
+          </li>
+          <li className="flex flex-col items-center">
+            <Check size={32} className="text-[#1E40AF] mb-2" />
+            <span className="text-xl font-bold text-slate-900">Performance</span>
+          </li>
+          <li className="flex flex-col items-center">
+            <Check size={32} className="text-[#1E40AF] mb-2" />
+            <span className="text-xl font-bold text-slate-900">Um modelo realmente moderno</span>
+          </li>
+        </ul>
+        <p className="text-slate-500 text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          A Recrutare é o ecossistema certo.
+        </p>
+        <div className="text-center">
+          <Button className="text-lg">Conheça a Recrutare</Button>
+        </div>
       </div>
     </section>
   );
@@ -325,23 +873,11 @@ const Contact = () => {
 };
 
 const Footer = () => (
-  <footer className="py-4 px-8 bg-slate-50 border-t border-slate-100">
-    <div className="container mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex flex-col gap-4 items-start">
-          <img src="/logo-recru.png" alt="Logo Recrutare" className="h-10 w-auto object-contain" />
-          <p className="text-slate-400 text-sm max-w-xs font-medium">
-            Sua parceira estratégica em recrutamento, seleção e hunting de alta performance.
-          </p>
-        </div>
-        <a href="https://www.instagram.com/recrutareoficial/?igsh=ejRoZmE0OTN6Z3h0#" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#1E40AF] transition-colors flex items-center gap-2">
-                <Instagram size={24} />
-                <span className="font-medium">Instagram</span>
-              </a>
-      </div>
-      <div className="mt-16 pt-8 border-t border-slate-200 flex justify-between items-center text-slate-400 text-xs font-bold uppercase tracking-widest">
-        <span>© {new Date().getFullYear()} RECRUTARE CONSULTORIA</span>
-      </div>
+  <footer className="py-8 px-8 bg-slate-50 border-t border-slate-100">
+    <div className="container mx-auto text-center">
+      <p className="text-slate-700 text-lg font-bold mb-2">Recrutare — Ecossistema de Recrutamento e Seleção Especializado</p>
+      <p className="text-slate-500 text-sm mb-4">Modelo B2B | Licenciamento Empresarial | Governança Centralizada</p>
+      <p className="text-slate-400 text-xs">© Recrutare. Todos os direitos reservados.</p>
     </div>
   </footer>
 );
@@ -351,6 +887,20 @@ const App: React.FC = () => {
     <div className="selection:bg-[#1E40AF] selection:text-white antialiased">
       <Navbar />
       <Hero />
+      <WhatIsRecrutare />
+      <ProblemTraditionalHR />
+      <SolutionRecrutare />
+      <HowEcosystemWorks />
+      <ProfessionalLicensing />
+      <RecrutareDeliverables />
+      <NotFranchise />
+      <JobBoard />
+      <ForCompanies />
+      <CompanyRegistration />
+      <CompetitiveAdvantages />
+      <NationalLicensedNetwork />
+      <FAQSection />
+      <FinalCallToAction />
       <Methodology />
       <AssessmentDetails />
 
